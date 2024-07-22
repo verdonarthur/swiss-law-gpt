@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import OpenAi from "openai";
+import * as OpenAIHelper from "./helpers/openai.js";
 import * as cheerio from "cheerio";
 import pg from "pg";
 
@@ -59,17 +59,8 @@ async function generateEmbeddings() {
   const embeddings = [];
 
   for (const document of documents) {
-    // OpenAI recommends replacing newlines with spaces for best results
-    const input = document.replace(/\n/g, " ");
-
-    const embeddingResponse = await client.embeddings.create({
-      model: "text-embedding-3-small",
-      input,
-    });
-
-    const [{ embedding }] = embeddingResponse.data;
-
-    embeddings.push({ content: input, embedding });
+    const embedding = await OpenAIHelper.getEmbedding(document);
+    embeddings.push({ content: document, embedding });
 
     // TODO: to remove when script is fully functional
     break;

@@ -11,10 +11,4 @@ services:
       - POSTGRES_PASSWORD=pg-law
       - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
+      - ./docker/db/init.sql:/docker-entrypoint-initdb.d/init.sql
