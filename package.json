@@ -1,0 +1,17 @@
+{
+  "name": "swiss-law-gpt",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "generate": "node --env-file=.env generate-embeddings.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "openai": "^4.52.7",
+    "pg": "^8.12.0"
+  }
+}

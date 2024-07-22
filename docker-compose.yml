@@ -1,0 +1,20 @@
+services:
+  db:
+    hostname: db
+    image: pgvector/pgvector:pg16
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      - POSTGRES_DB=swiss-law-gpt
+      - POSTGRES_USER=pg-law
+      - POSTGRES_PASSWORD=pg-law
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
