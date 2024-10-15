@@ -1,7 +1,6 @@
-import * as OpenAIHelper from "./helpers/openai.js";
-import pg from "pg";
-import * as GPTTokenizer from "gpt-tokenizer";
-import { oneLine, stripIndent } from "common-tags";
+import * as OpenAIHelper from './helpers/openai.ts';
+import * as GPTTokenizer from 'npm:gpt-tokenizer';
+import { oneLine, stripIndent } from 'npm:common-tags';
 
 const threshold = 0.5;
 const matchCount = 5;
@@ -13,7 +12,7 @@ async function getMatchingEmbedding(embedding) {
   const client = new Client();
   await client.connect();
 
-  let contents = [];
+  const contents = [];
 
   try {
     const res = await client.query(
