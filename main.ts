@@ -1,37 +1,19 @@
-import * as fs from "node:fs";
-import * as cheerio from "npm:cheerio";
-
-import {EmbeddingGenerator} from './src/generate-embeddings.ts';
+import {EmbeddingGenerator} from './src/EmbeddingGenerator.ts';
 import { GeminiAi } from './src/ai/GeminiAi.ts';
+import { SwissLawDb } from './src/models/SwissLawDb.ts'
+import {ProcessSwissLaw} from "./src/documents/ProcessSwissLaw.ts";
 
+// const geminiAi = new GeminiAi();
+// const generator = new EmbeddingGenerator(geminiAi);
 
-function getDocuments() {
-  const xml = fs.readFileSync(
-    "./documents-sources/2024-fr-swiss-civil-code.xml",
-    {
-      encoding: "utf8",
-    },
-  );
+const filePath = "./documents-sources/2024-fr-swiss-civil-code.xml";
+const processSwissLaw = new ProcessSwissLaw(filePath);
+const books = processSwissLaw.generateBooks();
+books.forEach(book => {
+    book.insert();
+})
 
-  const $ = cheerio.load(xml, { xmlMode: true });
-  const articles = $("article");
-  const articleTexts = [];
-
-  articles.each((_, element) => {
-    const paragraphs = $(element).find("paragraph content p");
-    paragraphs.each((_, p) => {
-      articleTexts.push($(p).text().trim());
-    });
-  });
-
-  return articleTexts;
-}
-
-console.log('-------Generating Embedding')
-
-const geminiAi = new GeminiAi();
-const generator = new EmbeddingGenerator(geminiAi);
-
-const results = await generator.generateEmbeddings(getDocuments());
-
-console.log(results);
+// const db = new SwissLawDb();
+// const results = await generator.generateEmbeddings(getDocuments());
+// db.insertEmbeddings(results);
+// dd(db.getAllEmbeddings());
