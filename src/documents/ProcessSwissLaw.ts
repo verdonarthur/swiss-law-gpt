@@ -20,7 +20,7 @@ export class ProcessSwissLaw {
     protected processBooks() {
         const bookElements = this.swissLawDocument('book');
 
-        const books = [];
+        const books: { title: string; heading: string; chapters: object[]; }[] = [];
         bookElements.each((_, bookElement) => {
             const book$ = $(bookElement);
 
@@ -47,10 +47,10 @@ export class ProcessSwissLaw {
         return books;
     }
 
-    protected processParts(document): object[] {
+    protected processParts(document: CheerioAPI): object[] {
         const chapters: object[] = [];
         const parts = document('book>part');
-        parts.each((_, partElement) => {
+        parts.each((_, partElement: string) => {
             const part$ = $(partElement);
 
             const partNum = part$('part>num').text();
@@ -69,7 +69,7 @@ export class ProcessSwissLaw {
         return chapters;
     }
 
-    protected processChapters(document, selector:string, partPrefix: string = ''): object[] {
+    protected processChapters(document: CheerioAPI, selector:string, partPrefix: string = ''): object[] {
         const chapters: object[] = [];
         document(selector).each((_, chapterElement) => {
             const chapter$ = $(chapterElement);

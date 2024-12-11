@@ -1,11 +1,12 @@
 {
   "tasks": {
     "dev": "deno run --watch main.ts",
-    "debug": "deno run --allow-all main.ts",
+    "generate-database": "deno run --allow-all ./src/cli/generate-database.ts",
     "migrate": "deno run --allow-all ./src/migrations/initial.ts"
   },
   "imports": {
     "@db/sqlite": "jsr:@db/sqlite@^0.12.0",
+    "@google/generative-ai": "npm:@google/generative-ai@^0.21.0",
     "@std/assert": "jsr:@std/assert@1",
     "sqlite-vec": "npm:sqlite-vec@^0.1.4-alpha.2",
     "sqlite-vec-linux-x64": "npm:sqlite-vec-linux-x64@^0.1.4-alpha.2"

@@ -1,23 +1,21 @@
-import {SwissLawDb} from "./SwissLawDb.ts";
 import {SQLite} from "../database/SQLite.ts";
+import type { IBook } from "../types/IBook.ts";
+import {IChapter} from "../types/IChapter.ts";
 
-export class Book {
+export class Book implements IBook {
     constructor(
-        public id: number,
+        public id: null|number,
         public title: string,
-        public chapters: Array<{
-            title: string,
-            content: string,
-        }>,
+        public chapters: Array<IChapter>,
     ) {}
 
     public insert() {
         const db = new SQLite();
-        db.upsert('swiss_law_books ', [{title: this.title}], ['title'], ['id']);
-        db.upsert('swiss_law_chapters', this.chapters, ['title', 'content'], ['id'])
+        db.upsert('swiss_law_books ', [{title: this.title}], ['title'], ['title']);
+        db.upsert('swiss_law_chapters', this.chapters, ['title', 'content'])
     }
 
-    public static fromObject(book: object): Book {
-        return new Book(book?.id, book?.title, book?.chapters);
+    public static fromObject(book: IBook): Book {
+        return new Book(book?.id ?? null, book?.title, book?.chapters);
     }
 }
