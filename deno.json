@@ -2,6 +2,7 @@
   "tasks": {
     "dev": "deno run --watch main.ts",
     "generate-database": "deno run --allow-all ./src/cli/generate-database.ts",
+    "search-law": "deno run --allow-all ./src/cli/search-law.ts",
     "migrate": "deno run --allow-all ./src/migrations/initial.ts"
   },
   "imports": {

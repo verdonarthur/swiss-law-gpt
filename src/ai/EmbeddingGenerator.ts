@@ -7,6 +7,10 @@ export class EmbeddingGenerator {
     ) {
     }
 
+    async generateFromText(text: string) {
+        return await this.client.getEmbedding(text);
+    }
+
     async generateFromTexts(texts: string[]): Promise<IEmbedding[]> {
         return await this.client.getBatchEmbeddings(texts);
     }

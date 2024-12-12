@@ -1,7 +1,6 @@
 import { EmbeddingGenerator } from "../ai/EmbeddingGenerator.ts";
 import { GeminiAi } from "../ai/GeminiAi.ts";
 import { ProcessSwissLaw } from "../documents/ProcessSwissLaw.ts";
-import { dd } from "../helpers.ts";
 import { Chapter } from "../models/Chapter.ts";
 
 const filePath = "./documents-sources/2024-fr-swiss-civil-code.xml";
