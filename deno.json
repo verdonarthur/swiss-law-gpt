@@ -1,9 +1,10 @@
 {
   "tasks": {
     "dev": "deno run --watch main.ts",
+    "migrate": "deno run --allow-all ./src/migrations/initial.ts",
     "generate-database": "deno run --allow-all ./src/cli/generate-database.ts",
-    "ask": "deno run --allow-all ./src/cli/search-law.ts",
-    "migrate": "deno run --allow-all ./src/migrations/initial.ts"
+    "boot": "rm -rf ./cache/database/swiss_law.db && mkdir -p ./cache/database && deno run migrate && deno run generate-database",
+    "ask": "deno run --allow-all ./src/cli/search-law.ts"
   },
   "imports": {
     "@db/sqlite": "jsr:@db/sqlite@^0.12.0",
