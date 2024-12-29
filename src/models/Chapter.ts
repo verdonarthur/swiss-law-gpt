@@ -1,6 +1,6 @@
-import type { IChapter } from "../types/IChapter.ts";
-import { SQLite } from "../database/SQLite.ts";
-import { Embedding } from "./Embedding.ts";
+import type {IChapter} from "../types/IChapter.ts";
+import {SQLite} from "../database/SQLite.ts";
+import {Embedding} from "./Embedding.ts";
 
 export class Chapter implements IChapter {
   constructor(
@@ -14,7 +14,7 @@ export class Chapter implements IChapter {
       throw new Error("Chapter does not exist");
     }
 
-    const db = new SQLite();
+    const db = SQLite.getInstance();
     const idEmbedding = Embedding.insert(embedding);
     db.query(
       `update swiss_law_chapters set embedding_id=${idEmbedding} where id=${this.id}`,
@@ -22,7 +22,7 @@ export class Chapter implements IChapter {
   }
 
   public static findAll(): Array<Chapter> {
-    const db = new SQLite();
+    const db = SQLite.getInstance();
     const chapters = db.select("select * from swiss_law_chapters");
 
     if (chapters.length === 0) {
@@ -34,9 +34,8 @@ export class Chapter implements IChapter {
   }
 
   static findBy(column: string, value: number | string) {
-    const db = new SQLite();
+    const db = SQLite.getInstance();
 
-    console.debug({ column, value });
     const row = db.select(
       `
             select id, title, content from swiss_law_chapters where ${column}=:value

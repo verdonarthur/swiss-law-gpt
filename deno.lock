@@ -17,10 +17,7 @@
     "npm:@google/generative-ai@0.21": "0.21.0",
     "npm:@google/generative-ai@0.21.0": "0.21.0",
     "npm:cheerio@*": "1.0.0",
-    "npm:cheerio@1.0.0": "1.0.0",
-    "npm:sqlite-vec-linux-x64@~0.1.4-alpha.2": "0.1.4-alpha.2",
-    "npm:sqlite-vec@0.1.4-alpha.2": "0.1.4-alpha.2",
-    "npm:sqlite-vec@~0.1.4-alpha.2": "0.1.4-alpha.2"
+    "npm:cheerio@1.0.0": "1.0.0"
   },
   "jsr": {
     "@db/sqlite@0.12.0": {
@@ -208,27 +205,6 @@
     "safer-buffer@2.1.2": {
       "integrity": "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="
     },
-    "sqlite-vec-darwin-arm64@0.1.4-alpha.2": {
-      "integrity": "sha512-eOZwQ3Z0pX/ALHLq71ZF0HAQLPRHu6b9PhH17xI2euqN6u9vdL2jDkem6d99O+wV4vYnShj4Vzt25LDet4Ehsg=="
-    },
-    "sqlite-vec-darwin-x64@0.1.4-alpha.2": {
-      "integrity": "sha512-uEyfy1ZdBP3KJNxY3jEaqDwZG2QYthKOGYpcC1OPNVspbLBU98dxFs2p3mDAOF3VarDzoLazQVRo14m+MqM5uw=="
-    },
-    "sqlite-vec-linux-x64@0.1.4-alpha.2": {
-      "integrity": "sha512-n8/slC9CuQ2TWXLqoyiRT4e2WN2/Ph5hq6RwinUWjyShqKgCtnTSalGyXEElYb1Pa/BXU3P3Odzc8N7zj2ryoQ=="
-    },
-    "sqlite-vec-windows-x64@0.1.4-alpha.2": {
-      "integrity": "sha512-YErL7ewC74PzGVS0UFfZrZ6lEy1WZ2OQPZt3lQDUC/qNo7rVZ5l4ZhRb2JczB7uKPVYEZoTdMbseDrM77gFg+A=="
-    },
-    "sqlite-vec@0.1.4-alpha.2": {
-      "integrity": "sha512-FAdsljvZHdSK4w5wWYiRoVOmnaatO0m2HHRNk1P0y4kl1Nb/MzWvMJriZwa/Kj8sEqFpIwHWg/+woRKB0X1jhg==",
-      "dependencies": [
-        "sqlite-vec-darwin-arm64",
-        "sqlite-vec-darwin-x64",
-        "sqlite-vec-linux-x64",
-        "sqlite-vec-windows-x64"
-      ]
-    },
     "undici@6.20.1": {
       "integrity": "sha512-AjQF1QsmqfJys+LXfGTNum+qw4S88CojRInG/6t31W/1fk6G59s92bnAvGz5Cmur+kQv2SURXEvvudLmbrE8QA=="
     },
@@ -246,9 +222,7 @@
     "dependencies": [
       "jsr:@db/sqlite@0.12",
       "jsr:@std/assert@1",
-      "npm:@google/generative-ai@0.21",
-      "npm:sqlite-vec-linux-x64@~0.1.4-alpha.2",
-      "npm:sqlite-vec@~0.1.4-alpha.2"
+      "npm:@google/generative-ai@0.21"
     ]
   }
 }

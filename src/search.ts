@@ -1,6 +1,6 @@
-import * as OpenAIHelper from './helpers/openai.ts';
-import * as GPTTokenizer from 'npm:gpt-tokenizer';
-import { oneLine, stripIndent } from 'npm:common-tags';
+import * as OpenAIHelper from "./helpers/openai.ts";
+import * as GPTTokenizer from "npm:gpt-tokenizer";
+import { oneLine, stripIndent } from "npm:common-tags";
 
 const threshold = 0.5;
 const matchCount = 5;
